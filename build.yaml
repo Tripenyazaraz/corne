@@ -1,33 +1,35 @@
 ---
 include:
-  # ----- White -----
+  # White
   - board: nice_nano_v2
     shield: corne_left
-    cmake-args: '-DCONFIG_ZMK_KEYBOARD_NAME="3p1-Corne-White"'
+    kconfig-files:
+      - config/corne_white.conf
     artifact-name: corne-white
-
   - board: nice_nano_v2
     shield: corne_right
-    cmake-args: '-DCONFIG_ZMK_KEYBOARD_NAME="3p1-Corne-White"'
+    kconfig-files:
+      - config/corne_white.conf
     artifact-name: corne-white
-
   - board: nice_nano_v2
     shield: settings_reset
-    cmake-args: '-DCONFIG_ZMK_KEYBOARD_NAME="3p1-Corne-White"'
+    kconfig-files:
+      - config/corne_white.conf
     artifact-name: corne-white
 
-  # ----- Purple -----
+  # Purple
   - board: nice_nano_v2
     shield: corne_left
-    cmake-args: '-DCONFIG_ZMK_KEYBOARD_NAME="3p1-Corne-Purple"'
+    kconfig-files:
+      - config/corne_purple.conf
     artifact-name: corne-purple
-
   - board: nice_nano_v2
     shield: corne_right
-    cmake-args: '-DCONFIG_ZMK_KEYBOARD_NAME="3p1-Corne-Purple"'
+    kconfig-files:
+      - config/corne_purple.conf
     artifact-name: corne-purple
-
   - board: nice_nano_v2
     shield: settings_reset
-    cmake-args: '-DCONFIG_ZMK_KEYBOARD_NAME="3p1-Corne-Purple"'
+    kconfig-files:
+      - config/corne_purple.conf
     artifact-name: corne-purple
