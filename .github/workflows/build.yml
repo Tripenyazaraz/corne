@@ -1,6 +1,16 @@
-name: Build ZMK firmware
+name: Build Corne Variants
+
 on: [push, pull_request, workflow_dispatch]
 
 jobs:
-  build:
+  build-white:
+    name: Build Corne White
     uses: zmkfirmware/zmk/.github/workflows/build-user-config.yml@main
+    with:
+      build-matrix-path: build-white.yaml
+
+  build-purple:
+    name: Build Corne Purple
+    uses: zmkfirmware/zmk/.github/workflows/build-user-config.yml@main
+    with:
+      build-matrix-path: build-purple.yaml
