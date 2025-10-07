@@ -8,29 +8,12 @@ jobs:
       matrix:
         variant:
           - name: "3p1 Corne White"
-            ble_name: "Corne-White"
+            ble_name: "corne-white"
           - name: "3p1 Corne Purple"
-            ble_name: "Corne-Purple"
-    runs-on: ubuntu-latest
+            ble_name: "corne-purple"
 
-    steps:
-      - name: Checkout user config
-        uses: actions/checkout@v4
+    uses: zmkfirmware/zmk/.github/workflows/build-user-config.yml@main
 
-      - name: Set BLE device name
-        run: echo "CONFIG_ZMK_BLE_DEVICE_NAME=\"${{ matrix.variant.ble_name }}\"" > config/ble_name.conf
-
-      - name: Merge BLE name into build config
-        run: |
-          echo "include: config/ble_name.conf" >> build.yaml
-
-      - name: Build ZMK firmware
-        uses: zmkfirmware/zmk/.github/workflows/build-user-config.yml@main
-        with:
-          build_dir: build/${{ matrix.variant.ble_name }}
-
-      - name: Upload firmware artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: firmware-${{ matrix.variant.ble_name }}
-          path: build/${{ matrix.variant.ble_name }}/firmware.zip
+    with:
+      build-dir: build/${{ matrix.variant.name }}
+      cmake-args: -DCONFIG_ZMK_BLE_DEVICE_NAME=\"${{ matrix.variant.ble_name }}\"
