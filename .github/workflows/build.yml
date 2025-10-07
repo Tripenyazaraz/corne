@@ -1,19 +1,6 @@
-name: Build Dual Corne Configs
-
+name: Build ZMK firmware
 on: [push, pull_request, workflow_dispatch]
 
 jobs:
   build:
-    strategy:
-      matrix:
-        variant:
-          - name: "3p1 Corne White"
-            ble_name: "corne-white"
-          - name: "3p1 Corne Purple"
-            ble_name: "corne-purple"
-
     uses: zmkfirmware/zmk/.github/workflows/build-user-config.yml@main
-
-    with:
-      build-dir: build/${{ matrix.variant.name }}
-      cmake-args: -DCONFIG_ZMK_BLE_DEVICE_NAME=\"${{ matrix.variant.ble_name }}\"
