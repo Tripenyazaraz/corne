@@ -5,12 +5,26 @@ on: [push, pull_request, workflow_dispatch]
 jobs:
   build-white:
     name: Build Corne White
-    uses: zmkfirmware/zmk/.github/workflows/build-user-config.yml@main
-    with:
-      build-matrix-path: build-white.yaml
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Use white build.yaml
+        run: cp build-white.yaml config/build.yaml
+
+      - name: Build firmware (White)
+        uses: zmkfirmware/zmk/.github/workflows/build-user-config.yml@main
 
   build-purple:
     name: Build Corne Purple
-    uses: zmkfirmware/zmk/.github/workflows/build-user-config.yml@main
-    with:
-      build-matrix-path: build-purple.yaml
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Use purple build.yaml
+        run: cp build-purple.yaml config/build.yaml
+
+      - name: Build firmware (Purple)
+        uses: zmkfirmware/zmk/.github/workflows/build-user-config.yml@main
